@@ -1,0 +1,42 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{extarrows}
+\usepackage{tikz-cd}
+\usepackage{xparse}
+
+% settings for code highlighting in the book.
+\input{settings/CodeSyntax}
+
+
+% writes inline code snippets
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{blue}{#1}}%
+}
+
+
+% Wind Programming Book
+
+\title{Wind: A Flow based Programming Language}
+\author{Joshua Weinstein}
+\date{2018}
+
+
+\begin{document}
+% Title Page
+\maketitle
+
+
+% Table of Contents Page
+\tableofcontents
+
+\newpage
+% Beginning of Content
+\input{sections/Preface}
+%\input{chapters/Introduction}
+%\input{chapters/Types}
+
+
+\end{document}
