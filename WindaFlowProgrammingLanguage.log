@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  26 JUL 2018 23:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 JUL 2018 15:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1002,12 +1002,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-) (./sections/Dedication.tex [4]) (./chapters/FlowBasedProgramming.tex [5]
-[6
-
-]
+) (./sections/Dedication.tex [4]) (./sections/AboutTheAuthor.tex [5])
+(./chapters/FlowBasedProgramming.tex [6]
 Chapter 1.
-[7] (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+[7
+
+] (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -1018,13 +1018,13 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 ) [8]
 (./WindaFlowProgrammingLanguage.aux) ) 
 Here is how much of TeX's memory you used:
- 22548 strings out of 492995
- 448706 string characters out of 6132704
- 479437 words of memory out of 5000000
- 25771 multiletter control sequences out of 15000+600000
- 13634 words of font info for 52 fonts, out of 8000000 for 9000
+ 22554 strings out of 492995
+ 448813 string characters out of 6132704
+ 519465 words of memory out of 5000000
+ 25774 multiletter control sequences out of 15000+600000
+ 13941 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,8n,84p,10379b,1217s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,8n,84p,10379b,1219s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
@@ -1033,13 +1033,14 @@ type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmtt8.pfb>
-Output written on WindaFlowProgrammingLanguage.pdf (8 pages, 116671 bytes).
+ublic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmtt8.pfb>
+Output written on WindaFlowProgrammingLanguage.pdf (8 pages, 132736 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 78 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

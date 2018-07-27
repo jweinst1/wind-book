@@ -20,10 +20,41 @@ b &= a + 1
 
 \par In the above example, $a$ is a variable with the value of 1, while $b$ is a variable with the value of the sum of $a$ and $1$. Neither of them can be changed. They might be able to be recreated under the same variable name, but this is not altering the existing value. Next, let's look at an example in C that deals with mutable and immutable data.
 
-\begin{lstlisting}[style=customc]
+\begin{lstlisting}[style=numc]
 int a = 1;
 int* b = malloc(sizeof(int));
 *b = a;
 \end{lstlisting}
 
-\par Here, $b$ is an integer allocated dynamically on the program's heap, while $a$ is a stack allocated variable. The main difference between them is that, $b$ is a \emph{mutable} data value that can be changed freely after it has been created. Yet $a$ is immutable. The last statement in the third line writes the value of $a$ into $b$. 
+\par Here, $b$ is an integer allocated dynamically on the program's heap, while $a$ is a stack allocated variable. The main difference between them is that, $b$ is a \emph{mutable} data value that can be changed freely after it has been created. Yet $a$ is immutable. The last statement, in the third, line sets the value of $b$ to $a$. This means $b$ can be considered a mutable type. 
+\par However, $a$ and $b$ are not both integers. $b$ is a \emph{pointer} to an integer, specifically a block of heap memory the size of one integer. In comparison to dynamically typed languages, $b$ can be thought of as a one element list. In flow-based programming, the same data types have both mutable and immutable characteristics. Which characteristics of data determine it's behavior is determined by the location and the \emph{movement} of the data.
+
+\subsection{Data Movement}
+
+\paragraph{  }Generally, moving data in a program means the ownership of values and data are being passed around. Some languages define specific criteria for the movement of objects and memory, like C++. \emph{Move semantics} usually refers to the process of moving dynamically allocated objects from one owner to another. Here is a simple example.
+
+\begin{lstlisting}[style=numc]
+int* a = malloc(sizeof(int) * 2);
+a[0] = 1;
+a[1] = 2;
+int* b = a;
+\end{lstlisting}
+
+\par The memory containing enough space for two integers, pointed to by $a$, is passed to $b$. After line four, both $a$ and $b$ point to or "hold" the same value. Accessing through either one yields the same behavior. Changing one of the integers of a changes it in b as well.
+
+\begin{lstlisting}[style=customc]
+printf("a is %d %d\n", a[0], a[1]);
+printf("b is %d %d\n", b[0], b[1]);
+b[0] = 5;
+printf("a is %d %d\n", a[0], a[1]);
+\end{lstlisting}
+
+\par Compiling this code will display the following in the terminal:
+
+\begin{lstlisting}[style=customc]
+1 2
+1 2
+5 2
+\end{lstlisting}
+
+\par Moving the resource always involves sharing or copying a \emph{pointer} or \emph{reference} to some value. It never writes the value itself again in a new location. 
