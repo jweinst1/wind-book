@@ -8,8 +8,22 @@
 
 \section{Data}
 
-\paragraph{  } In flow-based programming, data is considered any of the values or information that are computed or processed. Numbers, integers, strings, characters, lists, are all examples of data. Nearly all programming languages type the data that they contain and compute. At the raw level, data to a computer is simply sequences of $1$'s and $0$'s.
+\paragraph{  } In flow-based programming, data is considered any of the values or information that are computed or processed. Numbers, integers, strings, characters, lists, are all examples of data. Nearly all programming languages type the data that they contain and compute. At the raw level, data to a computer is simply sequences of $1$'s and $0$'s. Programming languages provide much more human readable forms of data. Integers or floats to hold numbers, strings to hold texts, and numerous data structures like a \emph{list} to hold an ordered collection of data.
 
-\begin{lstlisting}[style=cpp]
-int a* = new int[1];
+% mutable vs immutable disc
+\par An important distinction in how data is typically assigned types is whether a type is mutable or immutable. An \emph{immutable} type is one that cannot be altered or changed after it is created. In order to alter or change it, you must create a new copy of that immutable type from existing instances of the type. For example, an integer, or any number, is an immutable type. Numbers are created from operations performed on other numbers.
+
+\begin{align*}
+a &= 1 \\
+b &= a + 1
+\end{align*}
+
+\par In the above example, $a$ is a variable with the value of 1, while $b$ is a variable with the value of the sum of $a$ and $1$. Neither of them can be changed. They might be able to be recreated under the same variable name, but this is not altering the existing value. Next, let's look at an example in C that deals with mutable and immutable data.
+
+\begin{lstlisting}[style=customc]
+int a = 1;
+int* b = malloc(sizeof(int));
+*b = a;
 \end{lstlisting}
+
+\par Here, $b$ is an integer allocated dynamically on the program's heap, while $a$ is a stack allocated variable. The main difference between them is that, $b$ is a \emph{mutable} data value that can be changed freely after it has been created. Yet $a$ is immutable. The last statement in the third line writes the value of $a$ into $b$. 
