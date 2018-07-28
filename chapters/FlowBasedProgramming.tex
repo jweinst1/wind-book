@@ -57,4 +57,34 @@ printf("a is %d %d\n", a[0], a[1]);
 5 2
 \end{lstlisting}
 
-\par Moving the resource always involves sharing or copying a \emph{pointer} or \emph{reference} to some value. It never writes the value itself again in a new location. 
+\par Moving the resource always involves sharing or copying a \emph{pointer} or \emph{reference} to some value. Movement never writes the value itself again in a new location. Thus, immutable data cannot be moved in the context of usual move semantics. 
+\par In flow-based programming, data is copied from one node or location to another. A reference to data is never moved from owner to owner. During that copy, the data is most often transformed in some way, such that the data written to a new location is not the same as the data in the old location. The following example illustrates how a flow-based program would transform and copy data. \\
+
+\textbf{\emph{Example: Two node transport}}
+
+\begin{lstlisting}[style=numc]
+
+void enterNode(int* node, int arg) {
+      *node = arg;
+}
+
+void transferToNode(int* startNode, int* endNode, int modify) {
+      *endNode = *startNode + modify;
+      *startNode = 0;
+}
+
+\end{lstlisting}
+
+\par Two functions above are shown, \emph{enterNode} and \emph{transferToNode}. Both of these functions demonstrate the acquisition  and transfer of data between two nodes. It's important to note this is a very basic example. The nodes themselves here do not contain any information of how to "modify" data that they acquire and transfer. The \emph{modify} parameter is simply used as an example of how the next node a data value is transferred to modifies each data point it receives. Take note again that no objects, pointers, or references enter the nodes, only literal data values.
+
+\section{Nodes and Locations}
+
+\paragraph{  } Nodes, destinations, and locations determine the path data will travel in a flow-based program. Nodes which receive, transform, and send data can take on an incredible amount of different forms. The form of a node is usually determined by the functionality or role it plays. While the structure of a node is quite variable, it must always abide by the following rules: \\
+
+\textbf{\emph{Rules of Flow Nodes:}}
+
+\begin{enumerate}
+\item \emph{A node must possess some amount of readable and writable memory.}
+\item \emph{A node must have a valid memory address that can refer to itself.}
+\item \emph{A node must live longer than the data it handles.}
+\end{enumerate}
