@@ -88,3 +88,7 @@ void transferToNode(int* startNode, int* endNode, int modify) {
 \item \emph{A node must have a valid memory address that can refer to itself.}
 \item \emph{A node must live longer than the data it handles.}
 \end{enumerate}
+
+\par The first rule is the least ambiguous. All nodes must be containers, and be able to some non-zero amount of data. Specifically, nodes must own either an array or a pointer to a block of memory. If a node has to transport data along some path, it must be able to hold data temporarily at certain steps. For example, an \codeword{enum} value would not be a valid node, as even though it evaluates to an integer, it is not a container, nor does it possess the ability to own a block of memory.
+
+\par Rule two is quite simple, a node must exist or be allocated in addressable memory. A \emph{register} is not addressable, therefore a register cannot be a valid node. Constants defined with preprocessor statements like \codeerror{#define} do not have a memory address and therefore cannot be used as nodes. Compile-time constants and values can be used as nodes if they are permitted for modification during runtime.
