@@ -12,3 +12,5 @@
 \contentsline {paragraph}{ }{8}
 \contentsline {section}{\numberline {1.2}Nodes and Locations}{9}
 \contentsline {paragraph}{ }{9}
+\contentsline {subsection}{\numberline {1.2.1}Node Memory}{10}
+\contentsline {paragraph}{ }{10}

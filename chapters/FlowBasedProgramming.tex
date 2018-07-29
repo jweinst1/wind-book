@@ -92,3 +92,35 @@ void transferToNode(int* startNode, int* endNode, int modify) {
 \par The first rule is the least ambiguous. All nodes must be containers, and be able to some non-zero amount of data. Specifically, nodes must own either an array or a pointer to a block of memory. If a node has to transport data along some path, it must be able to hold data temporarily at certain steps. For example, an \codeword{enum} value would not be a valid node, as even though it evaluates to an integer, it is not a container, nor does it possess the ability to own a block of memory.
 
 \par Rule two is quite simple, a node must exist or be allocated in addressable memory. A \emph{register} is not addressable, therefore a register cannot be a valid node. Constants defined with preprocessor statements like \codeerror{#define} do not have a memory address and therefore cannot be used as nodes. Compile-time constants and values can be used as nodes if they are permitted for modification during runtime.
+
+\par The last rule ensures that nodes will be able to support, transform and move data from the start of the program to the end of it. The key idea behind flow-based programming is that, nodes are the supporting component of data flow. Nodes need live and be reusable throughout data flowing through the program. Specifically, nodes should not be created dynamically as data is intended to be transported. When data enters a flow, all the nodes should already be initialized and ready to pass along data.
+
+\subsection{Node Memory}
+
+\paragraph{  }As explained earlier, nodes must possess or own modifiable memory. Nodes can store the incoming data they acquire in a variety of ways. An important factor to consider in how a node uses memory is what kind of data the node deals with. Further, if the data is all the same type, or if the node accepts multiple data types in the same pass.
+\par First, let's look at a node which only holds a single value, and how it can be initialized, and deinitialized:
+
+\begin{lstlisting}[style=numc]
+#include <string.h>
+
+typedef struct 
+{
+       void* data;
+       size_t size;
+       int occupied;
+} SingleNode;
+
+void SingleNode_init(SingleNode* node, size_t size) {
+        node->size = size;
+        node->data = malloc(size);
+        node->occupied = 0;
+}
+
+void SingleNode_deinit(SingleNode* node) {
+        free(node->data);
+        memset(node, 0, sizeof(SingleNode));
+}
+\end{lstlisting}
+
+\par Let's break down the above code. First, we see the \codeword{struct} describing the attributes of the node. It has a \codeword{void} pointer to a block of memory, a field indicating the size, and a field acting as boolean to check if the node currently possess a data value. This implementation allows any C type to be placed and written into the memory of the node. However, in order to access the data we must cast the data field as some C type.
+
