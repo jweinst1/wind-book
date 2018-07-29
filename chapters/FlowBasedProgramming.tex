@@ -98,7 +98,7 @@ void transferToNode(int* startNode, int* endNode, int modify) {
 \subsection{Node Memory}
 
 \paragraph{  }As explained earlier, nodes must possess or own modifiable memory. Nodes can store the incoming data they acquire in a variety of ways. An important factor to consider in how a node uses memory is what kind of data the node deals with. Further, if the data is all the same type, or if the node accepts multiple data types in the same pass.
-\par First, let's look at a node which only holds a single value, and how it can be initialized, and deinitialized:
+\par First, let's look at a node which only holds a single value, and how it can be initialized, and deinitialized: \\
 
 \begin{lstlisting}[style=numc]
 #include <string.h>
@@ -122,5 +122,31 @@ void SingleNode_deinit(SingleNode* node) {
 }
 \end{lstlisting}
 
-\par Let's break down the above code. First, we see the \codeword{struct} describing the attributes of the node. It has a \codeword{void} pointer to a block of memory, a field indicating the size, and a field acting as boolean to check if the node currently possess a data value. This implementation allows any C type to be placed and written into the memory of the node. However, in order to access the data we must cast the data field as some C type.
+\par Let's break down the above code. First, we see the \codeword{struct} describing the attributes of the node. It has a \codeword{void} pointer to a block of memory, a field indicating the size, and a field acting as boolean to check if the node currently possess a data value. This implementation allows any C type to be placed and written into the memory of the node. However, in order to access the data we must cast the data pointer as some C type. While this isn't problematic, it urges the need for the types of data to be tracked externally to the node.
+
+\par In this setup, initializing a node requires that the node itself, the scalar type, already be declared and stored somewhere. The pointer to the node body is passed in, initializing it with it's memory and size. Then, once the node is done being used in the program, or needs to be resized, it can be de-initialized, by freeing the memory and clearing the data in the node's body. We want to permit the node itself to be stored in a centralized location, rather than allocating the node itself with a call to \codeword{malloc()} each time it is initialized.
+
+\par A downside to this approach is that it decouples what is essentially the metadata of the node, and the data of the node. It requires two steps to have a fully functional node. Next, let's look at nodes that combine both it's data and information in a single scalar body. \\
+
+\begin{lstlisting}[style=numc]
+#include <stdlib.h>
+
+typedef struct
+{
+    size_t capacity;
+    size_t len;
+    unsigned char[];
+} BlockNode;
+
+BlockNode* BlockNode_new(size_t size) {
+       BlockNode* node = malloc(sizeof(BlockNode) + size);
+       node->capacity = size;
+       node->len = 0;
+       return node;
+}
+\end{lstlisting}
+
+\emph{Note: The above uses a flexible array parameter, a special array available since C99. Flexible array parameters must always be the last members of a struct, and cannot be directly used with the sizeof operator.}
+
+\paragraph{BlockNode} is a node that uses a dummy pointer, also called a flexible array,  to refer to a variably sized body of memory it carries at the end of itself. Calling \codeword{sizeof()} on BlockNode wont' work directly, as every newly constructed node of this type exists with a differently sized block of memory.
 
