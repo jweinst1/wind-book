@@ -135,7 +135,7 @@ typedef struct
 {
     size_t capacity;
     size_t len;
-    unsigned char[];
+    unsigned char data[];
 } BlockNode;
 
 BlockNode* BlockNode_new(size_t size) {
@@ -148,5 +148,45 @@ BlockNode* BlockNode_new(size_t size) {
 
 \emph{Note: The above uses a flexible array parameter, a special array available since C99. Flexible array parameters must always be the last members of a struct, and cannot be directly used with the sizeof operator.}
 
-\paragraph{BlockNode} is a node that uses a dummy pointer, also called a flexible array,  to refer to a variably sized body of memory it carries at the end of itself. Calling \codeword{sizeof()} on BlockNode wont' work directly, as every newly constructed node of this type exists with a differently sized block of memory.
+\paragraph{BlockNode} is a node that uses a dummy pointer, also called a flexible array,  to refer to a variably sized body of memory it carries at the end of itself. Calling \codeword{sizeof()} on BlockNode will not work directly, as every newly constructed node of this type exists with a differently sized block of memory. Therefore the size of a BlockNode is given by the sum of it's \codeword{capacity} property, and the sizeof operator. Likewise, the \codeword{len} property indicates the amount of space occupied in the node's memory body segment. This makes the BlockNode slightly more useful than the SingleNode previously discussed, as we can store differently sized data in the same node.
+
+\par The \emph{len} property also makes it fairly easy to write data into the node, as well as expand the size of the node if and when needed.
+
+\begin{lstlisting}[style=numc]
+// Wrapped in () to prevent macro bloat errors
+#define BLOCKNODE_SIZEOF(node) \ 
+             (sizeof(BlockNode) + node->capacity)
+
+#define BLOCKNODE_EXPAND(node, extraSpace) \
+             do { \
+             node->capacity += extraSpace; \
+             size_t newSize = BLOCKNODE_SIZEOF(node); \
+             node = realloc(node, newSize);\
+             } while(0)
+
+\end{lstlisting}
+%realloc explanation
+\emph{Note: In C, the function realloc() takes as arguments, an existing pointer to a dynamically allocated chunk of memory, and the new desired size for that memory. The function attempts to resize the memory chunk  by simply extending it first, if the downstream addresses are unoccupied. However, the function can return a pointer with a different address than what was passed in, the event it needs to allocate and copy over the memory to a new address. Thus, a macro ideally should be used when dealing with a memory-embedded struct, as this alleviates the need to return expanded pointers to nodes.} \\
+
+\par We implemented two macros, \codeword{BLOCKNODE_SIZEOF} and \codeword{BLOCKNODE_EXPAND}. Each of them assists in expanding a BlockNode, allowing more new data to be written to it, if and when needed. However, in order for the node to acquire new data, it must increment it's \emph{len} field and check if it currently has enough capacity. This behavior can be demonstrated with the following:
+
+
+\begin{lstlisting}[style=numc]
+#include <string.h>
+
+BlockNode* BlockNode_write(BlockNode* node, void* data,size_t n) {
+         if(n > (node->capacity - node->len)) {
+                  BLOCKNODE_EXPAND(node, (n + 10));
+         }
+         memcpy(node->data, data, n);
+         node->len += n;
+         return node;
+}
+
+\end{lstlisting}
+
+
+
+
+
 
