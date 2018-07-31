@@ -185,7 +185,30 @@ BlockNode* BlockNode_write(BlockNode* node, void* data,size_t n) {
 
 \end{lstlisting}
 
+\par Prior to the node acquiring new data, the capacity of the node needs to be checked. The remaining space for a BlockNode, or any real block of memory is given by: 
 
+$$
+space = capacity - length
+$$
+
+Where $capacity$ is the total allocated space of the memory segment, and $length$ is the currently occupied boundary of the memory segment. The amount of space available is used to determine the procedure to write incoming data to the node. The cases below describe the course of action, given that n is a positive integer representing the size of the incoming data:
+
+% Procedural explanation of data acquisition for memory segment of node
+\begin{figure}[h]
+\[ \begin{cases} 
+      write & n \leq space \\
+       expand \rightarrow write & n > space
+   \end{cases}
+\]
+\caption{Different actions taken for a BlockNode to acquire new data.}
+\end{figure}
+
+\par It's important to understand that although this type of node, a \emph{BlockNode}, has to grow and expand to accumulate more data in it's own memory, nodes do not need to be implemented to grow dynamically. Nodes can use a fixed amount of memory, one that cannot be changed at runtime. These fixed-size nodes benefit from never having to check their space or expand themselves.
+\par The type of nodes the \emph{Wind} language uses are an even further optimization, nodes which only use static memory. In C, declaring an array with the \codeword{static} keyword tells the compiler to store that array in the resulting program's data segment. This means that the array can be available throughout the entire runtime, and uses absolute form of addressing. It does not need to wait for neither stack nor heap memory to be allocated for a node to be initialized. This implementation in Wind ill be discussed in a lter chapter.
+
+\subsection{Node Pathways}
+
+\paragraph{  } For now, we have mainly described the types of nodes, their pros and cons, as well as their key behavior.
 
 
 
