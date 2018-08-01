@@ -15,5 +15,7 @@
 \contentsline {subsection}{\numberline {1.2.1}Node Memory}{10}
 \contentsline {paragraph}{ }{10}
 \contentsline {paragraph}{BlockNode}{11}
-\contentsline {subsection}{\numberline {1.2.2}Node Pathways}{13}
+\contentsline {subsection}{\numberline {1.2.2}Node Connections}{13}
+\contentsline {paragraph}{ }{13}
+\contentsline {section}{\numberline {1.3}Flows}{13}
 \contentsline {paragraph}{ }{13}

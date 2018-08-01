@@ -206,9 +206,28 @@ Where $capacity$ is the total allocated space of the memory segment, and $length
 \par It's important to understand that although this type of node, a \emph{BlockNode}, has to grow and expand to accumulate more data in it's own memory, nodes do not need to be implemented to grow dynamically. Nodes can use a fixed amount of memory, one that cannot be changed at runtime. These fixed-size nodes benefit from never having to check their space or expand themselves.
 \par The type of nodes the \emph{Wind} language uses are an even further optimization, nodes which only use static memory. In C, declaring an array with the \codeword{static} keyword tells the compiler to store that array in the resulting program's data segment. This means that the array can be available throughout the entire runtime, and uses absolute form of addressing. It does not need to wait for neither stack nor heap memory to be allocated for a node to be initialized. This implementation in Wind ill be discussed in a lter chapter.
 
-\subsection{Node Pathways}
+\subsection{Node Connections}
 
-\paragraph{  } For now, we have mainly described the types of nodes, their pros and cons, as well as their key behavior.
+\paragraph{  } Up until now, we have mainly described the types of nodes, their pros and cons, as well as their key behavior. Next, the manner in which nodes connect to each other, and the structure of these connections will be discussed. Despite the different ways one can connect nodes to form a \emph{flow}, the main guideline is to not treat or handle nodes as objects. This implies that the nodes themselves and the states they might have should drive the movement of data. The transportation of data should not rely on using external data structures.
+
+\par The first, most naive form of a node connection is a single direction link. This allows a one way from of travel from one node to another.
+
+\begin{lstlisting}[style=customc]
+struct Node {
+       size_t cap;
+       size_t len;
+       struct Node* next;
+       unsigned char data[];
+};
+\end{lstlisting}
+
+\par The \emph{next} property, in this arrangement, is always \codeword{NULL} or a pointer to another node. This node connection functions very similar to a linked list. In this implementation though, more arbitrary data can be stored in the node, while a linked list is most often only storing individual values in the head of the nodes. Connections like these can similar be changed to produce doubly-connected nodes, or tree like node arrangements. However, nodes do not absolutely need to be linked by their addresses. Given that a population of nodes is constant or near constant over time, certain nodes can be programmed to pass data to other specific nodes.
+
+\par Nodes can specialize themselves in a flow-based program by assuming specific roles. The roles allow nodes to form a more consistent architecture. This also makes a node arrangement adhere more closely to the lifetime rule of nodes.
+
+\section{Flows}
+
+\paragraph{  } The final topic to introduce in flow-based programming are flows themselves.
 
 
 
