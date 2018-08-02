@@ -227,8 +227,18 @@ struct Node {
 
 \section{Flows}
 
-\paragraph{  } The final topic to introduce in flow-based programming are flows themselves. A flow is  the path and direction data follows as it traverses from node to node in a flow-based program. In a previous section, node \emph{connections} were discussed. The difference between a flow and a connection is that, a connection between nodes describes a localized, singular transition, while a flow describes the pathway of data through a program from input to output.
+\paragraph{  } The final topic to introduce in flow-based programming are flows themselves. A flow is  the path and direction data follows as it traverses from node to node in a flow-based program. In a previous section, node \emph{connections} were discussed. The difference between a flow and a connection is that, a connection between nodes describes a localized, singular transition, while a flow describes the pathway of data through a program from input to output. To make this distinction, we can describe a flow with no nodes in the following format:
 
+% zero nodes figure centered
+\begin{figure}[h]
+\centering
+\begin{tikzcd}
+&I \arrow[r] &O
+\end{tikzcd}
+\caption{A flow with zero nodes.}
+\end{figure}
+
+where $I$ is the \emph{input} of the program, and $O$ is the \emph{output} of the program. In this flow, there are no nodes present to manipulate or act whatsoever on the incoming data. Thus, data is simply moved from input to output.
 
 
 
