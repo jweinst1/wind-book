@@ -223,11 +223,11 @@ struct Node {
 
 \par The \emph{next} property, in this arrangement, is always \codeword{NULL} or a pointer to another node. This node connection functions very similar to a linked list. In this implementation though, more arbitrary data can be stored in the node, while a linked list is most often only storing individual values in the head of the nodes. Connections like these can similar be changed to produce doubly-connected nodes, or tree like node arrangements. However, nodes do not absolutely need to be linked by their addresses. Given that a population of nodes is constant or near constant over time, certain nodes can be programmed to pass data to other specific nodes.
 
-\par Nodes can specialize themselves in a flow-based program by assuming specific roles. The roles allow nodes to form a more consistent architecture. This also makes a node arrangement adhere more closely to the lifetime rule of nodes.
+\par Nodes can specialize themselves in a flow-based program by assuming specific roles. The roles allow nodes to form a more consistent architecture. This also makes a node arrangement adhere more closely to the lifetime rule of nodes. The longer and more constant a path of nodes exists, the less chance of errors or data leaks.
 
 \section{Flows}
 
-\paragraph{  } The final topic to introduce in flow-based programming are flows themselves.
+\paragraph{  } The final topic to introduce in flow-based programming are flows themselves. A flow is  the path and direction data follows as it traverses from node to node in a flow-based program. In a previous section, node \emph{connections} were discussed. The difference between a flow and a connection is that, a connection between nodes describes a localized, singular transition, while a flow describes the pathway of data through a program from input to output.
 
 
 
