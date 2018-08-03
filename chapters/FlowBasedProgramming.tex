@@ -227,7 +227,7 @@ struct Node {
 
 \section{Flows}
 
-\paragraph{  } The final topic to introduce in flow-based programming are flows themselves. A flow is  the path and direction data follows as it traverses from node to node in a flow-based program. In a previous section, node \emph{connections} were discussed. The difference between a flow and a connection is that, a connection between nodes describes a localized, singular transition, while a flow describes the pathway of data through a program from input to output. To make this distinction, we can describe a flow with no nodes in the following format:
+\paragraph{  } The final topic to introduce in flow-based programming are flows themselves. A flow is  the path and direction data follows as it traverses from node to node in a flow-based program. In a previous section, node \emph{connections} were discussed. The difference between a flow and a connection is that, a connection between nodes describes a localized, singular transition, while a flow describes the pathway of data through a program from input to output. To make this distinction, we can describe the simplest possible flow,  a flow with no nodes at all. Let's take a look at it visually:
 
 % zero nodes figure centered
 \begin{figure}[h]
@@ -238,7 +238,42 @@ struct Node {
 \caption{A flow with zero nodes.}
 \end{figure}
 
-where $I$ is the \emph{input} of the program, and $O$ is the \emph{output} of the program. In this flow, there are no nodes present to manipulate or act whatsoever on the incoming data. Thus, data is simply moved from input to output.
+where $I$ is the \emph{input} of the program, and $O$ is the \emph{output} of the program. In this flow, there are no nodes present to manipulate or act whatsoever on the incoming data. Thus, data is simply moved from input to output. There is no acquisitions or transfer of data, it's simply written right back out. From a code perspective, this would occur when command line arguments to a program are just written directly back to \codeword{stdout} or \codeerror{stderr}. This is illustrated in the following program:
 
+\begin{lstlisting}[style=numc]
+#include <stdio.h>
 
+int main(int argc, const char** argv) {
+       for(int i=1 ; i<argc ; i++) {
+              puts(argv[i]);
+        }
+  return 0;
+}
+\end{lstlisting}
+
+\par This program loops over the arguments the program is executed with, and prints them as strings to \codeword{stdout}. The arguments are never even written to any dynamic or static memory within the program. Flow-based programs with no nodes have no real effect on any arguments or data they consume. Now, with a single node, the flow looks similar:
+
+% Single node 
+\begin{figure}[h]
+\centering
+\begin{tikzcd}
+&I \arrow[r] &N_1 \arrow[r] &O
+\end{tikzcd}
+\caption{A flow with one node.}
+\end{figure}
+
+\par Here, $N_1$ is the node in the flow. It is enumerated with $1$ because in addition to being the only node it's also the first in the flow. In this arrangement, the flow has a single point in which manipulation of data occurs. However, there is no rule in a flow that the total amount of data coming into the program must be the same as the amount coming out. One possible role of a single node flow is to filter unwanted data, and only allow data that meets some criteria to reach the output of the program. This can be shown as:
+
+% One node filtering
+\begin{figure}[h]
+\centering
+\begin{tikzcd}
+& & &O \\
+&I \arrow[r] &N_1 \arrow{ru}{keep} \arrow{rd}{filter} & \\
+& & &Del
+\end{tikzcd}
+\caption{A flow with one node that filters.}
+\end{figure}
+
+\par $Del$ is not a node, but rather a terminal destination that signifies the data is deleted, and will not reach the output of the program. 
 
