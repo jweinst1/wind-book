@@ -251,7 +251,11 @@ int main(int argc, const char** argv) {
 }
 \end{lstlisting}
 
-\par This program loops over the arguments the program is executed with, and prints them as strings to \codeword{stdout}. The arguments are never even written to any dynamic or static memory within the program. Flow-based programs with no nodes have no real effect on any arguments or data they consume. Now, with a single node, the flow looks similar:
+\par This program loops over the arguments the program is executed with, and prints them as strings to \codeword{stdout}. The arguments are never even written to any dynamic or static memory within the program. Flow-based programs with no nodes have no real effect on any arguments or data they consume.
+
+\subsection{Single Node Flows}
+
+\paragraph{  } Flows with a single node have more control over their data then zero-node flows, yet are restricted to essentially one operation. A flow with a single node only has one "stop", before it reaches it's destination, the output of the program. Here is a diagram of a single node flow:
 
 % Single node 
 \begin{figure}[h]
@@ -275,5 +279,8 @@ int main(int argc, const char** argv) {
 \caption{A flow with one node that filters.}
 \end{figure}
 
-\par $Del$ is not a node, but rather a terminal destination that signifies the data is deleted, and will not reach the output of the program. 
+\par $Del$ is not a node, but rather a terminal destination that signifies the data is deleted, and will not reach the output of the program. This diagram accurately conveys the path in which data could take in a filtering situation. Yet, there are several operations in which the amount of data from input to output stays the same. For example, a single node flow can map each data value it's node acquires. It could also reduce all the data that passes through it's node to a single value. Overall, a singular node flow supports only one operation that can be performed on data.
 
+\subsection{Two Node Flows}
+
+\paragraph{  } Flows with two nodes in them offer a tremendous increase in utility and functionality over flows with a single node. First, having two nodes at the basic level allows for more than one operation to be performed on any incoming data.
