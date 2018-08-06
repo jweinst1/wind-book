@@ -283,4 +283,16 @@ int main(int argc, const char** argv) {
 
 \subsection{Two Node Flows}
 
-\paragraph{  } Flows with two nodes in them offer a tremendous increase in utility and functionality over flows with a single node. First, having two nodes at the basic level allows for more than one operation to be performed on any incoming data.
+\paragraph{  } Flows with two nodes in them offer a tremendous increase in utility and functionality over flows with a single node. First, having two nodes at the basic level allows for more than one operation to be performed on any incoming data. Such as the operations discussed previously, data can me mapped in one node and filtered in another, or mapped in both. The first and most direct advantage of a dual node flow is an additional operation.
+\par With two nodes, the flow can also be arranged in a fashion where the first node is a filter, and data that does not pass the filter is passed to the second node, where it is mapped to the output. Data that does pass the filter test is simply carried to the output directly. This is called a \emph{fork} node, and is illustrated below:
+
+\begin{figure}[h]
+\centering
+\begin{tikzcd}
+&I \arrow[r] &M_n \arrow[d, swap, "fail"] \arrow[r ,"pass"] &O \\
+& &F_n \arrow[ru, swap, "map"] &
+\end{tikzcd}
+\caption{A dual flow node with a conditional mapping arrangement.}
+\end{figure}
+
+\par In the above diagram, $F_n$ is a filtering node, and $M_n$ is a mapping node.
