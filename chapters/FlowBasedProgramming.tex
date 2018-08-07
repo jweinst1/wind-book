@@ -289,10 +289,25 @@ int main(int argc, const char** argv) {
 \begin{figure}[h]
 \centering
 \begin{tikzcd}
-&I \arrow[r] &M_n \arrow[d, swap, "fail"] \arrow[r ,"pass"] &O \\
-& &F_n \arrow[ru, swap, "map"] &
+&I \arrow[r] &F_n \arrow[d, swap, "fail"] \arrow[r ,"pass"] &O \\
+& &M_n \arrow[ru, swap, "map"] &
 \end{tikzcd}
 \caption{A dual flow node with a conditional mapping arrangement.}
 \end{figure}
 
-\par In the above diagram, $F_n$ is a filtering node, and $M_n$ is a mapping node.
+\par In the above diagram, $F_n$ is a filtering node, and $M_n$ is a mapping node. When data arrives at $F_n$ from the input, it is tested on the node's filter. If it passes, it goes straight to the output, $O$. If it does not pass, it is transferred to $M_n$, the mapping node. From there, data is mapped directly to the output. The data that travels through this flow forms a \emph{one way path}. There is, one, and only one direction the data can travel. The data cannot backtrack, it has no way of moving back toward the input. 
+\par A dual node flow can also be arranged to act on data recursively. This setup is very similar to the filter-map approach. Except, data is continuously checked against the filter, then mapped if it does not fit the filter's criteria. Data in such a flow can only progress to the output if it initially or eventually passes the filter. 
+
+% recursive flow filter to map.
+\begin{figure}[h]
+\centering
+\begin{tikzcd}[row sep=huge]
+&I \arrow[r] &F_n \arrow[d, bend left, "fail"]  \arrow[r] &O  \\
+& &M_n \arrow[u, bend left, "try"] &
+\end{tikzcd}
+\caption{A dual flow node with a recursive loop.}
+\end{figure}
+
+\par In this flow, there is a recursive \emph{loop}, where once data fails the filter, it is mapped, and then tested in the filter node again.
+
+
