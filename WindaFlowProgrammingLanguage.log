@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  7 AUG 2018 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  8 AUG 2018 08:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1045,37 +1045,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
-[12] [13] [14] [15]) [16] (./WindaFlowProgrammingLanguage.aux) ) 
+[12] [13] [14] [15]) (./chapters/SetupSyntaxAndTypes.tex [16]
+Chapter 2.
+) [17
+
+] (./WindaFlowProgrammingLanguage.aux) ) 
 Here is how much of TeX's memory you used:
- 22911 strings out of 492995
- 456313 string characters out of 6132704
+ 22914 strings out of 492995
+ 456398 string characters out of 6132704
  520521 words of memory out of 5000000
  26126 multiletter control sequences out of 15000+600000
  14277 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,16n,84p,10379b,1722s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/
-2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
-17/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on WindaFlowProgrammingLanguage.pdf (16 pages, 232989 bytes).
+</usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsl10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt8.pfb>
+Output written on WindaFlowProgrammingLanguage.pdf (17 pages, 235669 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 130 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

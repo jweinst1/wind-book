@@ -23,3 +23,5 @@
 \contentsline {paragraph}{ }{14}
 \contentsline {subsection}{\numberline {1.3.2}Two Node Flows}{15}
 \contentsline {paragraph}{ }{15}
+\contentsline {chapter}{\numberline {2}Setup, Syntax, and Types}{17}
+\contentsline {paragraph}{ }{17}

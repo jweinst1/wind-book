@@ -308,6 +308,7 @@ int main(int argc, const char** argv) {
 \caption{A dual flow node with a recursive loop.}
 \end{figure}
 
-\par In this flow, there is a recursive \emph{loop}, where once data fails the filter, it is mapped, and then tested in the filter node again.
+\par In this flow, there is a recursive \emph{loop}, where once data fails the filter, it is mapped, and then tested in the filter node again. This loop continues until the data passes the filter. The main concept here is that, the value of the data is different every time it passes through the filtering node. This procedure mimics the computational concept of recursion. The data is checked continuously against a base case, while if failing it, is incremented in some way.
+\par Overall, using two or more nodes in a flow greatly increases the flow-based program's utility. The exact flow implementation that the Wind language uses will be discussed in a later chapter.
 
 
