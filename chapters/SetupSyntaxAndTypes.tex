@@ -1,4 +1,19 @@
 
 \chapter{Setup, Syntax, and Types}
 
-\paragraph{  } In this chapter, the building and setup of Wind from source code will be discussed. We will also go over the basic syntax and data types present in the wind language
+\paragraph{  } In this chapter, the building and setup of Wind from source code will be discussed. We will also go over the basic syntax and data types present in the wind language. The Wind language also features several configurable options prior to compilation. The chapter will explain how to change and use those options for different scenarios.
+\par From a high level perspective, Wind is compiled from a repository of C files and header files. This compilation is done via a \emph{Makefile}, which produces an executable. That executable is runnable via a terminal, and can accept command line arguments. Currently, Wind code can be run interactively, in a \emph{REPL}. Wind can also run code from strings, and with different options, produce debug and performance information.
+
+\section{Download and Building}
+
+\paragraph{  } The Wind source code is stored, managed, and maintained in a git repository on GitHub. If you want to download or visit the repository, you can go to the following link: \\
+% link to github repo
+\\
+\url{https://github.com/jweinst1/Wind}
+
+\par In order to download the repository to your local computer, you need to \emph{clone} it. As long as you are on a UNIX operating system, you can run the following command in your terminal:
+
+\begin{verbatim}
+$ git clone https://github.com/jweinst1/Wind.git
+\end{verbatim}
+
