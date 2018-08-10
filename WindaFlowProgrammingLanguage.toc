@@ -27,3 +27,6 @@
 \contentsline {paragraph}{ }{17}{section*.15}
 \contentsline {section}{\numberline {2.1}Download and Building}{17}{section.2.1}
 \contentsline {paragraph}{ }{17}{section*.16}
+\contentsline {paragraph}{ }{17}{section*.17}
+\contentsline {subsection}{\numberline {2.1.1}Compiling Options}{19}{subsection.2.1.1}
+\contentsline {paragraph}{ }{19}{section*.18}

@@ -11,9 +11,81 @@
 \\
 \url{https://github.com/jweinst1/Wind}
 
-\par In order to download the repository to your local computer, you need to \emph{clone} it. As long as you are on a UNIX operating system, you can run the following command in your terminal:
+\paragraph{  } In order to download the repository to your local computer, you need to \emph{clone} it. As long as you are on a UNIX operating system, you can run the following command in your terminal:
 
 \begin{verbatim}
 $ git clone https://github.com/jweinst1/Wind.git
 \end{verbatim}
 
+\emph{Note:The "\$" as in most conventions is not part of the command, it symbolizes the current user of the terminal.}
+
+\par Next, go through and perform each of the following steps to build Wind:
+
+\begin{verbatim}
+$ cd Wind
+$ make build
+\end{verbatim}
+
+\par These commands will create a \emph{bin} directory which contains an executable named \emph{Wind}. This executable is the program that actually translates and executes Wind source code. The Wind repository does not come with any installers, but you can move the executable to any folder you wish. Later in this chapter, the different command line arguments for the executable will be discussed. However, for now, the "-h" flag will print out the health menu:
+
+% help guide print out
+\begin{verbatim}
+$ ./bin/Wind -h
+The Wind Programming Language Help Guide
+          save command: 
+               The save command allows you to save the current active data 
+               to a file path. This file is written in the Wind binary format.
+               Using this allows you to save and load an infinite amount of states
+               that Wind can operate and run from.
+               __example__: push 3 5 -> map ** 4 | + 4 -> save "nums"
+               Saved at: nums
+               _______________________ 
+               A file named 'nums.bwind' will appear on disk. 
+          load command: 
+               The load command allows you to load binary wind files into the 
+               current active data. 
+               This command permits Wind to load data from an infinite 
+               number of sources, 
+               and expand it's processing capabilities to an immense degree. 
+               __example__: push 3 5 -> map ** 4 | + 4 -> save "nums" ->
+                           clr -> load "nums" -> out
+               [ 85 629 ] 
+          reduce command: 
+               The reduce command fuses data through a flow of operations. 
+               It can be used with operations like +.
+               __example__: push 3 3 3 3 3 -> reduce + -> out
+               [ 15 ] 
+          filter command: 
+               The filer command restricts data through a flow of operations. 
+               It can be used with operations like < or > or !. 
+               __example__: push 5 4 -> map + 3 | * 3 -> out -> filter > 22 -> out 
+               [ 24 21 ]
+               [ 24 ]
+           map command: 
+               The map command transforms data through a flow of operations. 
+               It can be used with operations like +, - and more. 
+               __example__: push 5 5 -> map + 3 | * 3 -> out 
+               [ 24 24 ]
+           push command: 
+               The push command appends data to the end of the active data. 
+               __example__: push 5 6 7 -> out 
+              [ 5 6 7 ]
+           out command: 
+               The out command prints the entire active data to stdout. 
+           clr command: 
+               The clr command resets the active data.
+\end{verbatim}
+
+\subsection{Compiling Options}
+
+\paragraph{  } Upon running the build commands for Wind, you might see some messages in your terminal that look like this:
+
+\begin{verbatim}
+gcc -c -Wall -Iinclude 
+-DWindData_BUF_SIZE=50000 
+-DWindData_LOAD_SIZE=10000 
+-DWindComp_BUF_SIZE=2000 -c 
+-o lib/flow/WindState.o src/flow/WindState.c
+\end{verbatim}
+
+\par The above message contains several definitions, which are values passed into macros of the C preprocessor. In the general sense, this allows values to be defined inside source code externally upon compilation, versus manually editing source code. In this case, all of the names appearing after $-D$ are such flags. These flags control the amount of memory used in the buffer nodes of the language internally.
