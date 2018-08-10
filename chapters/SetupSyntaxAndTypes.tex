@@ -89,3 +89,13 @@ gcc -c -Wall -Iinclude
 \end{verbatim}
 
 \par The above message contains several definitions, which are values passed into macros of the C preprocessor. In the general sense, this allows values to be defined inside source code externally upon compilation, versus manually editing source code. In this case, all of the names appearing after $-D$ are such flags. These flags control the amount of memory used in the buffer nodes of the language internally.
+\par As discussed in the beginning of this book, a unique feature of Wind is that it does not use dynamically allocated memory, also called "heap" memory. It relies on static buffers that have memory within the data segment of the executable. This allows Wind to be compiled in a scalable fashion, and it's resource be throttled or increased as needed. Additionally, this feature permits Wind to easily run on embedded systems. Although the specific C-level implementation of Wind has not been discussed yet, the following configuration options can be found in the \codeword{Makefile} of the repo: \\
+
+\textbf{\emph{Wind Compiler Configurations}}
+\begin{itemize}
+\item \textbf{WindData\_LOAD\_SIZE}: \emph{This option controls the size of load buffer. In Wind, the load buffer accounts for the maximum amount of size of the arguments passed to each command. For now, commands are similar to function calls, such as $f(x, y)$. The size of this buffer is generally small, but it can be customized depending on the size of argument lists needed to be processed.}
+\item \textbf{WindData\_BUF\_SIZE}: \emph{This option controls the size of the active and inactive buffers. These buffers hold the data in Wind that can actively be extended, cleared, and manipulated with various operations. The size of this option should always be larger than the load or comp buffer options.}
+\item \textbf{WindComp\_BUF\_SIZE}: \emph{This option controls the size of the computation buffer. In the Wind flow, this buffer is used to temporarily store and modify data. Think of it as a larger version of a register. This config option must always be less than the load or active and inactive buffer size options.}
+\end{itemize}
+
+
