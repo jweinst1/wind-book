@@ -108,6 +108,46 @@ where $C_o$ is the comp size option, $L_o$ is the load size option, and $B_o$ is
 
 \section{Command Line Arguments}
 
-\paragraph{  } The Wind executable as a result from building the language has an array of different options it can be run with for different uses.
+\paragraph{  } The Wind executable that comes from building the language has an array of different options it can be run with for different uses. Command line options in this case are also referred to as "flags". These flags can be used alone or with additional arguments, depending on their purpose. For the following examples, the Wind code used will be: $push\: 5 \longrightarrow out$. Although specific commands in the Wind language have not been explained, we can interpret this code as: \emph{push the integer 5 onto the active buffer and write it to stdout}.
+
+\subsection{Running Strings of Code}
+
+\par In order to run a string of Wind source code, you can choose an option that allows you to specify a string of code as one of the command line arguments. The first of this, is the straight \emph{compile} option, written as "-c":
+
+\begin{verbatim}
+$ ./bin/Wind -c "push 5 -> out"
+[ 5 ]
+\end{verbatim}
+
+Upon executing this command, the list of the active buffer is written to stdout. This is the active buffer inside the Wind runtime. The -c option can be used at any time you need to simply run a string of code. However, let's say if you want some more detailed information about the internal state of Wind, like the command, the state of the translator, and more. There is another option, $-d$:
+
+\begin{verbatim}
+$ ./bin/Wind -d "push 5 -> out"
+_____Wind___Debug_______
+..........State.........
+Has Error: false
+Mode: Command
+Command: null
+
+..........Data.........
+Load Buffer: -> [ ]
+Active Buffer: -> [ 5 ]
+Inactive Buffer: -> [ ]
+
+..........Computation.........
+Comp Buffer: -> [ ]
+________________________
+\end{verbatim}
+
+\par Using the $-d$ option runs the string of source code \emph{and} prints out debug information about the state of the Wind executor and translator. The \emph{state} tab above details the mode of translation, the current command found in the source code, and whether or not an error has been detected. This option is useful for visualizing the current data active in different buffers inside Wind. The computation buffer is separated because it always holds temporary values that are in transit between the flow. The exact structures of these buffers will be discussed in a later chapter.
+\par Another option that can be used is the $-t$ option. This option
+
+\begin{verbatim}
+$ ./bin/Wind -t "push 5 -> out"
+[ 5 ]
+Time: 0.000081
+\end{verbatim}
+
+
 
 
