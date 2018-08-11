@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  10 AUG 2018 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  10 AUG 2018 17:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1257,14 +1257,14 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
 Package rerunfilecheck Info: File `WindaFlowProgrammingLanguage.out' has not ch
 anged.
-(rerunfilecheck)             Checksum: 4EF0C452E9EA84C908179F634371AAFB;905.
+(rerunfilecheck)             Checksum: 2A510DB60A61D009526703D68AD1D2AF;974.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
  ) 
 Here is how much of TeX's memory you used:
- 26612 strings out of 492995
- 512235 string characters out of 6132704
+ 26615 strings out of 492995
+ 512270 string characters out of 6132704
  599100 words of memory out of 5000000
- 29634 multiletter control sequences out of 15000+600000
+ 29635 multiletter control sequences out of 15000+600000
  14277 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,16n,84p,10379b,1909s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1285,10 +1285,10 @@ ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on WindaFlowProgrammingLanguage.pdf (20 pages, 260506 bytes).
+Output written on WindaFlowProgrammingLanguage.pdf (20 pages, 262301 bytes).
 PDF statistics:
- 411 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
- 169 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 417 PDF objects out of 1000 (max. 8388607)
+ 374 compressed objects within 4 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

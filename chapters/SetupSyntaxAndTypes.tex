@@ -98,4 +98,16 @@ gcc -c -Wall -Iinclude
 \item \textbf{WindComp\_BUF\_SIZE}: \emph{This option controls the size of the computation buffer. In the Wind flow, this buffer is used to temporarily store and modify data. Think of it as a larger version of a register. This config option must always be less than the load or active and inactive buffer size options.}
 \end{itemize}
 
+\par The settings of these configurations vary depend on the sizes of data you will be handling while running Wind code and whether or not you are building Wind for an embedded system. A general relationship between the different options though can be be described as:
+
+$$
+C_o << L_o < B_o
+$$
+
+where $C_o$ is the comp size option, $L_o$ is the load size option, and $B_o$ is the active and inactive buffer size option. The size of the comp option should always be \emph{far} smaller than the load option.
+
+\section{Command Line Arguments}
+
+\paragraph{  } The Wind executable as a result from building the language has an array of different options it can be run with for different uses.
+
 

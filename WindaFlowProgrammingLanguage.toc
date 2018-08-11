@@ -30,3 +30,5 @@
 \contentsline {paragraph}{ }{17}{section*.17}
 \contentsline {subsection}{\numberline {2.1.1}Compiling Options}{19}{subsection.2.1.1}
 \contentsline {paragraph}{ }{19}{section*.18}
+\contentsline {section}{\numberline {2.2}Command Line Arguments}{20}{section.2.2}
+\contentsline {paragraph}{ }{20}{section*.19}
