@@ -140,13 +140,68 @@ ________________________
 \end{verbatim}
 
 \par Using the $-d$ option runs the string of source code \emph{and} prints out debug information about the state of the Wind executor and translator. The \emph{state} tab above details the mode of translation, the current command found in the source code, and whether or not an error has been detected. This option is useful for visualizing the current data active in different buffers inside Wind. The computation buffer is separated because it always holds temporary values that are in transit between the flow. The exact structures of these buffers will be discussed in a later chapter.
-\par Another option that can be used is the $-t$ option. This option
+\par Another option that can be used is the $-t$ option. This option runs the string of source code and also times the run. It prints out the time in seconds it took to fully translate and execute the string of code. This is a great option to check performance of the code your running.
 
 \begin{verbatim}
 $ ./bin/Wind -t "push 5 -> out"
 [ 5 ]
 Time: 0.000081
 \end{verbatim}
+
+\subsection{The Wind REPL}
+
+\paragraph{  } Aside from command line arguments, Wind also supports a read, eval and print loop (REPL). This REPL can be activated by executing the Wind executable with no arguments. The REPL prompts the terminal for input, allowing many lines of code to be run continuously. This allows an interactive feel into the flow based nature of the Wind language, and is great for testing out new ideas. Below is an example of the REPL being use:
+
+\begin{verbatim}
+$ ./bin/Wind
+Wind - Version (0.0.1)
+The Wind Programming Language REPL
+To exit, simply enter 'exit'. For help, run with '-h' flag.
+wind> push 5 6 4 3
+wind> out
+[ 5 6 4 3 ]
+wind> map + 5 | -2 | ** 2 -> out
+Error: Cannot map argument of type: 'Number'
+wind> map + 5 | - 2 -> out          
+[ 8 9 7 6 ]
+wind> exit
+\end{verbatim}
+
+\par The error, in this example was attempting to map a negative number and not the \emph{minus} symbol. Symbols and mapping will be discussed in a later chapter.
+
+\section{Syntax}
+
+\paragraph{  } The Wind language uses a unique syntax that emphasizes a continuous, stream-like grammar. Wind is designed to be read in a piece by piece, intermittent basis. Such that, Wind programs can be simply described as concatenation of commands, their arguments, and the arrow, $\longrightarrow$ tokens. This permits Wind source code to be easily constructed by other processes and programs. Additionally, having stream-like syntax allows code to be called in smaller increments on environments that have tight memory constraints, like embedded systems.
+
+\subsection{Grammar}
+
+The abstract grammar of Wind can be described as follows:
+
+% Grammar listing and figure
+\begin{figure}[h]
+\begin{align*}
+ code &:= C_1 \rightarrow \dots C_n \\
+ command &:= name\:\: a_1 \dots a_n \\
+ name &:= [a-zA-Z]+ \\
+ argument &:= number\: |\: boolean \:|\: none \:|\: string \\
+ boolean &:= True \: | \: False \\
+ number &:= [0-9]+
+\end{align*}
+\caption{The syntactic grammar of the Wind language}
+\end{figure}
+
+\par However, the grammar of Wind does not have strict, enclosed rules. For example, even the code: \\
+
+\begin{verbatim}
+push  4 5 6 ->
+\end{verbatim}
+
+will run without any error, because Wind is designed to be read in a continuous fashion, and be readable as a stream. This means that, like the REPL, the state of code can be preserved between each run.  In fact, running the above string of code in the repl, then just the string "out", will write the previously formed active buffer in the first string to stdout. Wind also supports saving it's current internal state to a binary file and reloading that file at later time. The \emph{save} and \emph{load} commands will be discussed later.
+
+\section{Types}
+
+\paragraph{  } The Wind language uses a simple, efficient type system, that is entirely immutable. The typing system allows types to easily be copied, and written over, such as if transition of one data type to another is needed. In comparison to other programming language terminology, all of Wind's types are \emph{primitive}, there are no constructed or initialized types that can be user defined.
+
 
 
 
