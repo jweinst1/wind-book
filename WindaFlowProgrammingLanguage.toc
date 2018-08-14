@@ -38,3 +38,10 @@
 \contentsline {section}{\numberline {2.3}Syntax}{22}{section.2.3}
 \contentsline {paragraph}{ }{22}{section*.21}
 \contentsline {subsection}{\numberline {2.3.1}Grammar}{22}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}Types}{23}{section.2.4}
+\contentsline {paragraph}{ }{23}{section*.22}
+\contentsline {subsection}{\numberline {2.4.1}Bools}{23}{subsection.2.4.1}
+\contentsline {paragraph}{ }{23}{section*.23}
+\contentsline {subsection}{\numberline {2.4.2}Numbers}{23}{subsection.2.4.2}
+\contentsline {paragraph}{Numbers}{23}{section*.24}
+\contentsline {subsection}{\numberline {2.4.3}Strings}{24}{subsection.2.4.3}

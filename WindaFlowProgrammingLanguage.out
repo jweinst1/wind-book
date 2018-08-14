@@ -18,3 +18,7 @@
 \BOOKMARK [2][-]{subsection.2.2.2}{The Wind REPL}{section.2.2}% 18
 \BOOKMARK [1][-]{section.2.3}{Syntax}{chapter.2}% 19
 \BOOKMARK [2][-]{subsection.2.3.1}{Grammar}{section.2.3}% 20
+\BOOKMARK [1][-]{section.2.4}{Types}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.4.1}{Bools}{section.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.4.2}{Numbers}{section.2.4}% 23
+\BOOKMARK [2][-]{subsection.2.4.3}{Strings}{section.2.4}% 24

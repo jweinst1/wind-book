@@ -201,8 +201,40 @@ will run without any error, because Wind is designed to be read in a continuous 
 \section{Types}
 
 \paragraph{  } The Wind language uses a simple, efficient type system, that is entirely immutable. The typing system allows types to easily be copied, and written over, such as if transition of one data type to another is needed. In comparison to other programming language terminology, all of Wind's types are \emph{primitive}, there are no constructed or initialized types that can be user defined.
+\par The most simplistic data type in Wind is the \emph{None} type. It has no real value, and is meant to symbolize the absence of a value.  However, Wind's types also abide by trueness, where types correspond to either \codeword{False} or \codeword{True} bool types depending on their representation. Since \emph{None} essentially implies an absent or "off" state, in operations that result in a bool output, None will be considered as \codeword{False}:
 
+\begin{verbatim}
+$ ./bin/Wind -c "push None -> map ! -> out"
+[ False ]
+\end{verbatim}
 
+\subsection{Bools}
 
+\paragraph{  } The Bool type in Wind represents the boolean states of true and false. Those values are displayed as \codeword{True} and \codeword{False} respectively. Bool types are used extensively for filtering in Wind. For now though, we can refer to the logical \emph{not} operation performed in previous examples. This is one operator that when used with the \emph{map} command, turns other data types into their respective logical NOT booleans:
 
+\begin{verbatim}
+$ ./bin/Wind -c "push None True False 0 3 4 7 3 0 0  -> map ! -> out"
+[ False False True False False False False False False False ]
+\end{verbatim}
+
+Currently in Wind, \emph{numbers} do not abide by a trueness rule, and thus since a number is not a boolean, it always evaluates to the value False. However, Bools can be evaluated to numbers in the cases of number oriented symbols being used in a command like \codeword{map}, see the example below:
+
+\begin{verbatim}
+$ ./bin/Wind -c "push 1 2 -> map + True -> out"
+[ 2 3 ]
+\end{verbatim}
+
+\subsection{Numbers}
+
+\paragraph{Numbers} in Wind represent numerical values. They can represent both floating pointer numbers and integers. Internally, numbers in Wind are double precision floating point numbers that are displayed as an integer if their value corresponds to one. Numbers are an important type in Wind, used for many commands such as reduction, filtering, mapping and more.
+\par Numbers can be pushed onto the active buffer like so:
+
+\begin{verbatim}
+$ ./bin/Wind -c "push 1 2 0.0005 -> out"
+[ 1 2 0.001 ]
+\end{verbatim}
+
+\par Wind only displays up the third decimal place for floating point numbers, but the precision, binary value is stored internally.
+
+\subsection{Strings}
 
