@@ -246,7 +246,7 @@ No unsafe side effects arise from an unsafe number operation.
 
 \subsection{Strings}
 
-\paragraph{  } In Wind, strings currently are used for specifying file paths, and printing as apart of the active or inactive buffer. Strings cannot be concatenated yet, that will come in a future version of Wind. They can be pushed onto the stream, or used to store the internal state of the active buffer in a file. The specific commands of \emph{load} and \rmph{save} that will be discussed in the next chapter, however the utility of strings can be seen in the sample below
+\paragraph{  } In Wind, strings currently are used for specifying file paths, and printing as apart of the active or inactive buffer. Strings cannot be concatenated yet, that will come in a future version of Wind. They can be pushed onto the stream, or used to store the internal state of the active buffer in a file. The specific commands of \emph{load} and \emph{save} that will be discussed in the next chapter, however the utility of strings can be seen in the sample below
 
 \begin{verbatim}
 jweinstein-MBP-71683:wind jweinstein$ ./bin/Wind
@@ -267,4 +267,28 @@ Loaded data from: data.bwind
 [ 4 3 4 True ]
 wind> exit
 \end{verbatim}
+
+\par Strings can also be pushed onto the active buffer, and written to stdout.
+
+\subsection{Symbols}
+
+\paragraph{  } Unlike in other programming languages, Wind considers operators a type of their own. This, in part, allows them to be moved around freely for executing commands, just as numbers and strings or other types are. Instead of operators being a key word or syntax token, operators are encapsulated as symbols, immutable data that represents a single value. Much like the \emph{None} type, except symbols correspond to specific roles and operations.
+\par Wind's symbol types consist of the following: \\
+
+\textbf{\emph{Symbol Types:}}
+\begin{enumerate}
+\item \textbf{Assign:} $=$
+\item \textbf{Not:} $!$
+\item \textbf{Delete:} $Del$
+\item \textbf{Plus:} $+$
+\item \textbf{Minus:} $-$
+\item \textbf{Multiply:} $*$
+\item \textbf{Divide:} $/$
+\item \textbf{Power:} $**$
+\item \textbf{Greater Than:} $>$
+\item \textbf{Less Than:} $<$
+\item \textbf{Separator:} $|$
+\end{enumerate}
+
+\par The above symbols offer a wide variety of computational tools that can be used in Wind. The \emph{Separator} symbol, $|$, is a special symbol that allows multiple operations inside commands like \emph{map} or \emph{filter} to be included in the same command. It is similar to the idea of a pipe command on operating systems like UNIX.
 
