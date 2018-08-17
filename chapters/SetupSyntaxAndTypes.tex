@@ -234,7 +234,37 @@ $ ./bin/Wind -c "push 1 2 0.0005 -> out"
 [ 1 2 0.001 ]
 \end{verbatim}
 
-\par Wind only displays up the third decimal place for floating point numbers, but the precision, binary value is stored internally.
+\par Wind only displays up the third decimal place for floating point numbers, but the precision, binary value is stored internally. This makes some number operations like addition or division a little faster as real conversion between integer and floating point formats is not necessary.
+\par Numbers in Wind are considered \emph{safe} numbers. Numbers cannot exhibit unsafe behavior, such as being divided by zero, or overflowing. For example, if a number such as in the case of a mapping were to be divided by zero, the zero would just be treated as one, and thus a safe division. See below:
+% Zero divsion
+\begin{verbatim}
+$ ./bin/Wind -c "push 3 4 5 -> map / 0 -> out"
+[ 3 4 5 ]
+\end{verbatim}
+
+No unsafe side effects arise from an unsafe number operation.
 
 \subsection{Strings}
+
+\paragraph{  } In Wind, strings currently are used for specifying file paths, and printing as apart of the active or inactive buffer. Strings cannot be concatenated yet, that will come in a future version of Wind. They can be pushed onto the stream, or used to store the internal state of the active buffer in a file. The specific commands of \emph{load} and \rmph{save} that will be discussed in the next chapter, however the utility of strings can be seen in the sample below
+
+\begin{verbatim}
+jweinstein-MBP-71683:wind jweinstein$ ./bin/Wind
+Wind - Version (0.0.1)
+The Wind Programming Language REPL
+To exit, simply enter 'exit'. For help, run with '-h' flag.
+wind> push 4
+wind> push 3 4 True 
+wind> out
+[ 4 3 4 True ]
+wind> save "data"
+Saved at: data.bwind
+wind> clr
+wind> out
+[ ]
+wind> load "data" -> out
+Loaded data from: data.bwind
+[ 4 3 4 True ]
+wind> exit
+\end{verbatim}
 
