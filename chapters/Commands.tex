@@ -2,4 +2,9 @@
 % commands chapter
 \chapter{Commands}
 
-\paragraph{  } In Wind, all computation is initiated and encapsulated inside commands.
+\paragraph{  } In Wind, all computation is initiated and encapsulated inside commands. Wind's stream-like syntax eliminates the use of traditional grammars where a program is generally composed of statements, each which have their different forms. Commands are far more analogous to function calls, they have a name and the arguments the command is invoked with. Each command offers specific functionality, and can differ in it's results and side effects greatly depending on the arguments supplied to them. 
+\par This chapter will go over each command, and example use cases. It will also discuss the limitations of each command, and the recommended approach for desired manipulations of data.
+
+\section{push}
+
+\paragraph{  } The most fundamental and often used command in Wind is \emph{push}. The push command has shown up in previous examples in this text, and has the role of appending and writing new data to the end of the active buffer. In Wind, is it one of the two possible ways to add new data into Wind's buffers, the other being the \emph{load} command
