@@ -3,8 +3,72 @@
 \chapter{Commands}
 
 \paragraph{  } In Wind, all computation is initiated and encapsulated inside commands. Wind's stream-like syntax eliminates the use of traditional grammars where a program is generally composed of statements, each which have their different forms. Commands are far more analogous to function calls, they have a name and the arguments the command is invoked with. Each command offers specific functionality, and can differ in it's results and side effects greatly depending on the arguments supplied to them. 
+\par One key concept behind commands is they are executed as they are read from source code, in an interpreted fashion. There is no true compilation of entire documents of source code in Wind. Source code is treated as units of instructions, commands. These are read and executed sequentially. An error occurring does not prevent previous code from properly running:
+
+\begin{verbatim}
+wind> push 3 -> out -> push 4 -> out -> c
+[ 3 ]
+[ 3 4 ]
+Error: Expected command symbol, found 'c'
+\end{verbatim}
+
 \par This chapter will go over each command, and example use cases. It will also discuss the limitations of each command, and the recommended approach for desired manipulations of data.
 
 \section{push}
 
-\paragraph{  } The most fundamental and often used command in Wind is \emph{push}. The push command has shown up in previous examples in this text, and has the role of appending and writing new data to the end of the active buffer. In Wind, is it one of the two possible ways to add new data into Wind's buffers, the other being the \emph{load} command
+\paragraph{  } The most fundamental and often used command in Wind is \emph{push}. The push command has shown up in previous examples in this text, and has the role of appending and writing new data to the end of the active buffer. In Wind, is it one of the two possible ways to add new data into Wind's buffers, the other being the \emph{load} command.
+\par The command can be used with none, one, or more arguments. Using the push command with no arguments has no effect, as exemplified below:
+
+\begin{verbatim}
+wind> push 1 2 3 -> out
+[ 1 2 3 ]
+wind> push -> out
+[ 1 2 3 ]
+\end{verbatim}
+
+\par Attempting to push an incorrectly specified type results in an error. In fact, this is true of any command used in Wind.
+
+\begin{verbatim}
+wind> push r
+Error: Expected argument or value, found 'r'
+\end{verbatim}
+
+\section{out}
+
+\paragraph{  } The \emph{out} command is used to write the current contents of the active buffer to the standard output. It does not use or take any arguments. Internally, it prints each of the data item's string representations. These offer a conversion between the binary representation of Wind data and a human readable version. Every type in Wind has it's own unique string representation. Below are several examples using the \emph{out} command: \\
+
+\begin{verbatim}
+wind> out 
+[ 3 4 ]
+wind> push True False None
+wind> out
+[ 3 4 True False None ]
+wind> push "hello" -> out
+[ 3 4 True False None "hello" ]
+wind> push + - * / -> out
+[ 3 4 True False None "hello" + - * / ]
+\end{verbatim}
+
+\section{clr}
+
+\paragraph{  } Perhaps the simplest command in Wind is the \emph{clr} command, also called "clear". It erases the contents of the active buffer and sets the length of it to zero, which allows all of it's space to be reused again. \\
+
+\begin{verbatim}
+wind> push 3 4 5 -> out -> clr -> out
+[ 3 4 5 ]
+[ ]
+\end{verbatim}
+
+\par The \emph{clr} command, similar to other commands in Wind, does not error if excess arguments are used. This can be seen below:
+
+\begin{verbatim}
+wind> push 3 4 -> clr 4 5 3 -> out
+[ ]
+\end{verbatim}
+
+\par Part of the reasoning behind this is, if Wind intends to be a high performance language, and work on embedded systems, the flow of computation and data processing should only stop fi absolutely necessary. Errors that would only be caused by the programmer not obeying a specific rule  are not essential to producing intended behavior. Wind changes the idea of safety in a programming language to more pertain to the safety of the runtime, and the platform it runs on, versus keeping track of what the programmer is doing.
+
+\section{map}
+
+\paragraph{  } The map command.
+

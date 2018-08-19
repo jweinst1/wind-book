@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  17 AUG 2018 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  17 AUG 2018 22:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1269,20 +1269,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
 ]
 Chapter 3.
-) [27]
+[27]) [28]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 42.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
  (./WindaFlowProgrammingLanguage.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
-Package rerunfilecheck Info: File `WindaFlowProgrammingLanguage.out' has not ch
-anged.
-(rerunfilecheck)             Checksum: 1B37A438A528E6915BFC92E9AB69D455;1570.
+
+
+Package rerunfilecheck Warning: File `WindaFlowProgrammingLanguage.out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `WindaFlowProgrammingLanguage.out':
+(rerunfilecheck)             Before: 1B37A438A528E6915BFC92E9AB69D455;1570
+(rerunfilecheck)             After:  F03034A63AF702AEB662BCF7E507CA15;1671.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
  ) 
 Here is how much of TeX's memory you used:
- 26665 strings out of 492995
- 512850 string characters out of 6132704
+ 26669 strings out of 492995
+ 512890 string characters out of 6132704
  599110 words of memory out of 5000000
  29645 multiletter control sequences out of 15000+600000
  14277 words of font info for 55 fonts, out of 8000000 for 9000
@@ -1305,10 +1312,10 @@ ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on WindaFlowProgrammingLanguage.pdf (27 pages, 282042 bytes).
+Output written on WindaFlowProgrammingLanguage.pdf (28 pages, 284114 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 473 compressed objects within 5 object streams
- 208 named destinations out of 1000 (max. 500000)
+ 532 PDF objects out of 1000 (max. 8388607)
+ 480 compressed objects within 5 object streams
+ 212 named destinations out of 1000 (max. 500000)
  221 words of extra memory for PDF output out of 10000 (max. 10000000)
 
