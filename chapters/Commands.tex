@@ -70,5 +70,23 @@ wind> push 3 4 -> clr 4 5 3 -> out
 
 \section{map}
 
-\paragraph{  } The map command.
+\paragraph{  } The map command in Wind maps operations and their arguments to data. It transforms data to change values according to different procedures, such as addition, or logical NOT. Mapping in Wind involves creating and writing a new copy of that data with a transformed value. The exact mechanism for continuous immutable states will be discussed in the next chapter, but for now we can think of mapping as a function:
+
+$$
+map(x, s, a_1, \dots, a_n) \longrightarrow y
+$$
+
+where $x$ is the target data, $s$ is the symbol, $a_1 \dots a_n$ is the list of arguments, and $y$ is the result data. The above relationship describes the process of a map command for a single data value. Mapping multiple operations and arguments to multiple data values is different, as the question of order arises. In Wind, one can think of the execution of a \emph{map} command as the application of a set of tuples against a set of data:
+
+\begin{align*}
+ S_d &= \{d_1,\dots,d_n\} \\
+ S_s &= \{ (s_1, a_1,\dots,a_n), \dots,  (s_k, a_1,\dots,a_n)\} \\
+ S_r &= S_d \times S_s
+\end{align*}
+
+Here, $S_d$ is the initial data set, $S_s$ is the set of tuples of symbols and their arguments, and $S_r$ is the resulting data. The map command execution is really just the multiplication of sets and their members, which can be further simplified to:
+
+$$
+map : \mathbb{D} \times \mathbb{S} \longrightarrow \mathbb{R}
+$$
 

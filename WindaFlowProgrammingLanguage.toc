@@ -53,3 +53,8 @@
 \contentsline {section}{\numberline {3.1}push}{27}{section.3.1}
 \contentsline {paragraph}{ }{27}{section*.28}
 \contentsline {section}{\numberline {3.2}out}{28}{section.3.2}
+\contentsline {paragraph}{ }{28}{section*.29}
+\contentsline {section}{\numberline {3.3}clr}{28}{section.3.3}
+\contentsline {paragraph}{ }{28}{section*.30}
+\contentsline {section}{\numberline {3.4}map}{29}{section.3.4}
+\contentsline {paragraph}{ }{29}{section*.31}
