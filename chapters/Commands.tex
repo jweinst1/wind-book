@@ -90,3 +90,53 @@ $$
 map : \mathbb{D} \times \mathbb{S} \longrightarrow \mathbb{R}
 $$
 
+\subsection{Usage}
+
+\paragraph{  } To use the \emph{map} command, it can be, as explained previously, paired with tuples of symbols and arguments, to relevant data types:
+
+\begin{verbatim}
+wind> push 1 2 3 4
+wind> map + 5 | * 3 -> out
+[ 18 21 24 27 ]
+\end{verbatim}
+
+\par The \emph{map} command can also be used with several other symbols, such as the logical NOT, as well as the exponent symbol:
+
+\begin{verbatim}
+wind> push 3 10 10 10       
+wind> map ** 2 -> out
+[ 9 100 100 100 ]
+wind> map * 3 | / 3 6 -> out
+[ 1.500 16.667 16.667 16.667 ]
+\end{verbatim}
+
+\section{filter}
+
+\paragraph{ } The \emph{filter} command in Wind works similarly to the map command theoretically. Yet, instead of transforming data it performs a test on data, to check whether or not it should retained in the active buffer, or filtered out. The filtering test can best be though of as a boolean function:
+
+$$
+F_t: b^k \longrightarrow \{0, 1\}
+$$
+
+where $b$ is the input, and $k$ is the \emph{ary} of the function. This means that if the domain of the function is 0, then the result of the function will be constant. However, as that input changes, the arity increases, which makes the output more variable and less certain. Therefore, we can deduce a filtered set of data is:
+
+$$
+S_f = \{ x | x  \in S_d \iff F_t(x) = 1 \}
+$$
+
+In Wind, when data fails a filter test, it is removed for the active buffer's data. The relationship between how the active and inactive buffer's filter data internally will be discussed later.
+
+\subsection{Usage}
+
+\paragraph{  } In Wind, the \emph{filter} command can be used with two symbols, $>$ and $<$, each representing lesser than or greater than logical operations for numbers. Some examples are as follows:
+
+\begin{verbatim}
+wind> push 3 4 5 8 54 20 5 -> out
+[ 3 4 5 8 54 20 5 ]
+wind> filter < 5 | > 30 -> out
+[ ]
+wind> push 3 6 8 5
+wind> filter > 3 -> out
+[ 6 8 5 ]
+\end{verbatim}
+
