@@ -140,3 +140,56 @@ wind> filter > 3 -> out
 [ 6 8 5 ]
 \end{verbatim}
 
+\par As shown above, the $|$ symbol can be used to chain multiple filter symbols and their requirements. Since the filter command is meant to divide groups of data that either pass the filter or do not pass the filter, the equals and not equals operations not supported. More operations such as greater than or equals will be added to Wind in the future.
+
+\section{reduce}
+
+\paragraph{  } The \emph{reduce} command in Wind allows data to be reduced through a symbol's applied operation. Reduction uses data already present in the active buffer, and reduces the first data value in the active buffer against the trailing data. A common example of reduction anywhere is to sum a list of numbers. Wind supports a sum operation:
+
+\begin{verbatim}
+wind> push 1 3 4 6 7 -> out
+[ 1 3 4 6 7 ]
+wind> reduce + -> out
+[ 21 ]
+wind> push 20 20 20 -> out
+[ 21 20 20 20 ]
+wind> reduce *
+Error: Cannot run reduce operation with instruction type: 'Multiply'
+wind> reduce - -> out
+Error: Cannot run reduce operation with instruction type: 'Minus'
+wind> reduce + -> out
+[ 81 ]
+\end{verbatim}
+
+\par If the reduce command is attempted with a symbol it does not support, an error is raised.
+
+\section{save}
+
+\paragraph{  } The \emph{save} command in Wind allows the internal active buffer contents to be saved to a file that can be reloaded and used in the Wind runtime later on. All of the Wind buffers, which functions as node's in a flow of data, all store data in a special binary format. This format allows a non-segmented chunk of data to be treated as an ordered collection of data values. This method of encapsulating data makes it highly available for performance tight situations as well as embedded systems.
+\par Since Wind has no system of variables or storing values as variables in an environment, keeping the data in binary sequences allows the save and load commands to leverage storing the output of processed data. Additionally, these commands allow other programs to synthesize data in Wind's binary specification. The load and save commands create a way for other programs to leverage the use of Wind.
+\par The \emph{save} command can be used as follows: \\
+
+\begin{verbatim}
+wind> push 5 6 7 8 True -> out
+[ 5 6 7 8 True ]
+wind> save "/sample"
+Error: File path '/sample' cannot be written to.
+wind> save "../foo"
+Saved at: ../foo.bwind
+\end{verbatim}
+
+\par If a path cannot be written to for some reason, an error is displayed.
+
+\section{load}
+
+\paragraph{  } The \emph{load} command in Wind allows \codeword{.bwind} files to be read and loaded back as the active buffer in Wind's runtime. It allows full restoration of state from a previously stored binary wind file. Coupled with the \emph{save} command, the load command allows the manipulation, filtration, and alteration of many different data sets. 
+\par The load command is used similarly to the save command, it loads a .bwind file at a specific path:
+
+\begin{verbatim}
+wind> load "../foo"
+Loaded data from: ../foo.bwind
+wind> out
+[ 5 6 7 8 True ]
+wind> push 3 -> out
+[ 5 6 7 8 True 3 ]
+\end{verbatim}

@@ -62,3 +62,7 @@
 \contentsline {paragraph}{ }{29}{section*.32}
 \contentsline {section}{\numberline {3.5}filter}{30}{section.3.5}
 \contentsline {paragraph}{ }{30}{section*.33}
+\contentsline {subsection}{\numberline {3.5.1}Usage}{30}{subsection.3.5.1}
+\contentsline {paragraph}{ }{30}{section*.34}
+\contentsline {section}{\numberline {3.6}reduce}{31}{section.3.6}
+\contentsline {paragraph}{ }{31}{section*.35}
