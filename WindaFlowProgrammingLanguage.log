@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  20 AUG 2018 13:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  23 AUG 2018 10:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1097,21 +1097,21 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
-(./WindaFlowProgrammingLanguage.toc)
+(./WindaFlowProgrammingLanguage.toc [3])
 \tf@toc=\write5
 \openout5 = `WindaFlowProgrammingLanguage.toc'.
 
- [3] (./sections/Preface.tex
+ [4] (./sections/Preface.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-) (./sections/Dedication.tex [4]) (./sections/AboutTheAuthor.tex [5])
-(./chapters/FlowBasedProgramming.tex [6]
-Chapter 1.
-[7
+) (./sections/Dedication.tex [5]) (./sections/AboutTheAuthor.tex [6])
+(./chapters/FlowBasedProgramming.tex [7] [8
 
-] (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+]
+Chapter 1.
+[9] (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -1124,34 +1124,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
-[8]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
-[9]
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
-[10]
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
-[11]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
-[12] [13] [14] [15]) (./chapters/SetupSyntaxAndTypes.tex [16]
+[14] [15] [16] [17]) (./chapters/SetupSyntaxAndTypes.tex [18]
 Chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 9--13
 
  []
 
-[17
+[19
 
 ]
 Overfull \hbox (43.49661pt too wide) in paragraph at lines 77--77
@@ -1231,7 +1231,7 @@ Overfull \hbox (48.74657pt too wide) in paragraph at lines 77--77
 he active data.[] 
  []
 
-[18]
+[20]
 Overfull \hbox (27.74675pt too wide) in paragraph at lines 77--77
 []               \OT1/cmtt/m/n/10 The out command prints the entire active data
  to stdout.[] 
@@ -1248,28 +1248,28 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
- [19] [20]
-[21]
+ [21] [22]
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
 
-[22]
+[24]
 Overfull \hbox (17.24684pt too wide) in paragraph at lines 218--218
 []\OT1/cmtt/m/n/10 $ ./bin/Wind -c "push None True False 0 3 4 7 3 0 0  -> map 
 ! -> out"[] 
  []
 
-[23] [24]
+[25] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
-) (./chapters/Commands.tex [25] [26
+) (./chapters/Commands.tex [27] [28
 
 ]
 Chapter 3.
-[27]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
@@ -1279,29 +1279,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
-[28] [29] [30]) [31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 42.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
+[30] [31] [32]
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 162--162
+[]\OT1/cmtt/m/n/10 Error: Cannot run reduce operation with instruction type: 'M
+ultiply'[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
+
+ []
+
+[33]) (./chapters/Implementation.tex [34]
+Chapter 4.
+) [35
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 43.
  (./WindaFlowProgrammingLanguage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
-
-
-Package rerunfilecheck Warning: File `WindaFlowProgrammingLanguage.out' has cha
-nged.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `WindaFlowProgrammingLanguage.out':
-(rerunfilecheck)             Before: 297992046776635C50C850D9B139B9FB;1883
-(rerunfilecheck)             After:  F5D6CD2E5585CEA7CEFCE7DB22A1B20E;1995.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 43.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 43.
+Package rerunfilecheck Info: File `WindaFlowProgrammingLanguage.out' has not ch
+anged.
+(rerunfilecheck)             Checksum: 835416FCA32458ED6162B04D3AB03865;2147.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 43.
  ) 
 Here is how much of TeX's memory you used:
- 26691 strings out of 492995
- 513147 string characters out of 6132704
- 599116 words of memory out of 5000000
- 29651 multiletter control sequences out of 15000+600000
+ 26709 strings out of 492995
+ 513377 string characters out of 6132704
+ 599119 words of memory out of 5000000
+ 29656 multiletter control sequences out of 15000+600000
  14277 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,16n,84p,10379b,1909s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1323,10 +1331,10 @@ ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2
 017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on WindaFlowProgrammingLanguage.pdf (31 pages, 297690 bytes).
+Output written on WindaFlowProgrammingLanguage.pdf (35 pages, 303164 bytes).
 PDF statistics:
- 592 PDF objects out of 1000 (max. 8388607)
- 535 compressed objects within 6 object streams
- 228 named destinations out of 1000 (max. 500000)
- 269 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 637 PDF objects out of 1000 (max. 8388607)
+ 576 compressed objects within 6 object streams
+ 238 named destinations out of 1000 (max. 500000)
+ 309 words of extra memory for PDF output out of 10000 (max. 10000000)
 
