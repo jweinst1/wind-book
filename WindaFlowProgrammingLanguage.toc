@@ -72,3 +72,5 @@
 \contentsline {paragraph}{ }{34}{section*.37}
 \contentsline {chapter}{\numberline {4}Implementation}{35}{chapter.4}
 \contentsline {paragraph}{ }{35}{section*.38}
+\contentsline {section}{\numberline {4.1}Translation}{36}{section.4.1}
+\contentsline {paragraph}{ }{36}{section*.39}
