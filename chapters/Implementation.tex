@@ -15,8 +15,79 @@
 \paragraph{  } In most programming languages, the source code is first tokenized, then arranged into an abstract syntax tree. This process is commonly referred to as parsing. Parsing traditionally involves looking through characters in source code by a grammar which is ordered by priority. This is useful for languages with a nested structure. Such as functional languages normally require parsing many different elements, such as function parameters, function bodies, variables, names and more. All of which only occur under certain parent elements.
 \par Wind has no nested structure or syntax. It is a truly \emph{linear} language. This means instead of being concerned with the state of the syntactic structure, we are only concerned with the source code itself. For checking a direct \emph{match} for a sequence of characters within an input string, naive comparison or a form of regular expression is used. In Wind however, both of these approaches would be far too slow.
 \par Naive matching of a collection of substrings against a target string has a high complexity. Regular expressions can indeed be fast, yet normally require heavy duty utilities. Regular expressions are usually compiled as non-deterministic state machines prior to being able to match or search strings. This is tricky to due in a small scale environment. More so, the syntactic elements of Wind are not overly complex. The true power of regex is revealed in the matching and searching of more intricate structures.
-\par Wind uses a technique called \emph{static jump prefixing}, which uses nested jump tables to match prefixes of strings. These jump tables are created when the C-compiler detects a switch statement with 5 or more cases. Most modern C-compilers, including gcc, support this. Nested jump tables allow a syntactic element in source code to be translated to an instruction in $O(N_c)$, where $N_c$ is the number of characters in the element of the source code. The \emph{static} word in the title refers to the jump tables being formed at compile time, meaning they cannot be made or changed during the runtime of the executable. Dynamic jump tables are possible to implement, but would require the tedious task of compiling and running assembly code on the fly. Either way, the algorithm will work the same. First, let's look at the logic behind translating a single syntactic element using jump prefixing.
+\par Wind uses a technique called \emph{static jump prefixing}, which uses nested jump tables to match prefixes of strings. These jump tables are created when the C-compiler detects a switch statement with 5 or more cases. Most modern C-compilers, including gcc, support this. Nested jump tables allow a syntactic element in source code to be translated to an instruction in $O(N_c)$, where $N_c$ is the number of characters in the element of the source code. The \emph{static} word in the title refers to the jump tables being formed at compile time, meaning they cannot be made or changed during the runtime of the executable. Dynamic jump tables are possible to implement, but would require the tedious task of compiling and running assembly code on the fly. Either way, the algorithm will work the same. To get a better understanding, a jump table is best described as a function, mapping some input to some output to a location within a set.
 
-\begin{theorem}[Singular Jump Prefixing]
-Let $s$ be a string composed of $n$ characters. Let $e$ be a syntactic element of $k$ characters. Let $T_k$ be table of $k$ positions. If a character corresponds to some non-negative integer $i$, for any position $k$ in $T_k$, it is located at some offset $i$ from the beginning of the table. 
+\begin{theorem}[Jump Tables]
+Let $j(x)$ be a piecewise function who's domain is any non-negative integer $x$. Assume that $j$ maps to some position $y$, where $j(x) \longrightarrow y$. Assume that $y$ is either a valid position, or is the null position, $0$.
 \end{theorem}
+
+Next, let's say our function $j$ has 2 possible positions, and the null position. The following is a valid piecewise representation:
+
+
+\[ \begin{cases} 
+      0 &\longleftarrow x \neq 45 \land x \neq 64 \\
+      1 &\longleftarrow x = 45 \\
+      2 &\longleftarrow x = 64 
+   \end{cases}
+\]
+
+If we assume the input of $j(x)$ are 8-bit signed integers or characters, we can see that such a function only gives a valid output if the character matches it's piece wise mapping. In a computational scenario, the zero case of the piecewise function corresponds to a \codeword{default} or error scenario of a jump table. We can compare the piecewise function with the following switch statement.
+
+\begin{lstlisting}[style=customc]
+switch(x) {
+      case '$': return 1;
+      case '*': return 2;
+      default:
+            fprintf(stderr, "Syntax Error");
+            return; 
+}
+\end{lstlisting}
+
+\par In the above switch statement, characters are used in place of integer literals to convey the idea of characters from the source code being used as an index to match against. However, so far we have only explored the use of a jump table to match a \emph{length one} element. For multi length elements, such as keyword or command names, we have to use nested jump tables. One can approximate the idea of a nested jump table via nested piecewise functions.
+\par The following is an example taken from the Wind source code to match the \emph{clr} command:
+
+\begin{lstlisting}[style=numc]
+int WindRun_command(const char** code)
+{
+        while(**code)
+        {
+                switch(**code)
+                {
+                case ' ':
+                case '\n':
+                case '\t':
+                case '\v':
+                        *code += 1; //white space
+                        break;
+                case WindRun_COMMENT_SYM:
+                        *code += 1;
+                        *code = _move_ptr_end_cmnt(*code);
+                        break;
+                case 'c':
+                        switch((*code)[1])
+                        {
+                        case 'l':
+                                switch((*code)[2])
+                                {
+                                case 'r':
+                                        // exec out
+                                        *code += 3;
+                                        WindState_set_cmd(WindCommand_clr);
+                                        goto TRANS_TO_LOAD;
+                                default:
+                                        WindState_write_err("Expected command symbol, found 'cl%c'", *code[2]);
+                                        return 0;
+                                }
+                                break;
+                        default:
+                                WindState_write_err("Expected command symbol, found 'c%c'", *code[1]);
+                                return 0;
+                        }
+                        break;
+\end{lstlisting}
+
+\par Starting from the top, let's break down the code. This function accepts a \codeword{const char*} to source code, which it moves as the translation finds more elements, piece by piece. The function's while loop will execute until the source code reaches the null terminating character. When the function encounters certain characters, it may call specialized translation functions to match specific elements, such as an integer or quote-bounded string. 
+\par This function ignores whitespace, but considers it a length one syntactic element of any white space character, and advances the source code by one.
+\par If a character is encountered the matches 'c', then  the look-ahead character is then checked against a nested switch statement. The main concept here is that, \emph{both} switch statements are jump tables, and nested tables are only reachable through their outer tables. This allows advancement in state towards matching an element in $O(1)$ complexity, one for each character matched.
+
+\section{Execution and Computation}
