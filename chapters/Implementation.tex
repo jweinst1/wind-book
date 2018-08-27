@@ -88,6 +88,22 @@ int WindRun_command(const char** code)
 
 \par Starting from the top, let's break down the code. This function accepts a \codeword{const char*} to source code, which it moves as the translation finds more elements, piece by piece. The function's while loop will execute until the source code reaches the null terminating character. When the function encounters certain characters, it may call specialized translation functions to match specific elements, such as an integer or quote-bounded string. 
 \par This function ignores whitespace, but considers it a length one syntactic element of any white space character, and advances the source code by one.
-\par If a character is encountered the matches 'c', then  the look-ahead character is then checked against a nested switch statement. The main concept here is that, \emph{both} switch statements are jump tables, and nested tables are only reachable through their outer tables. This allows advancement in state towards matching an element in $O(1)$ complexity, one for each character matched.
+\par If a character is encountered the matches 'c', then  the look-ahead character is then checked against a nested switch statement. The main concept here is that, \emph{both} switch statements are jump tables, and nested tables are only reachable through their outer tables. This allows advancement in state towards matching an element in $O(1)$ complexity, one for each character matched. If we want to model this mathematically, let's consider the following:
+
+\begin{theorem}[Jump Prefixing]
+Let $j(x) \longrightarrow T$ be a function with a domain of any non-negative integer, $x$. Let $S_t$ be a set of functions. The range of $j(x)$ are the members of set $S_t$. Every function member of $S_t$ subsequently has a range of more sets of functions. This continues until the range of a function results in a termination symbol. 
+\end{theorem}
+
+We can further explore this idea in the following diagram:
+
+\begin{tikzcd}[row sep=huge]
+& &j_1(x) \arrow[ld, "2"] \arrow[d, "3"] \arrow[rd , "4"]  & & \\
+&j_2(x) \arrow[rd, "5"] &j_3(x) \arrow[d, "5"] &j_4(x)\arrow[ld, "5"] \arrow[rd, "7"] & \\
+&j_8(x) &j_5(x) &j_6(x) &j_7(x)
+\end{tikzcd}
+
+
 
 \section{Execution and Computation}
+
+\paragraph{  } 
