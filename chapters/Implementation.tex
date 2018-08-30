@@ -102,8 +102,37 @@ We can further explore this idea in the following diagram:
 &j_8(x) &j_5(x) &j_6(x) &j_7(x)
 \end{tikzcd}
 
-
+The above is just an example, yet illustrates the nested nature of such switch statements.
 
 \section{Execution and Computation}
 
-\paragraph{  } 
+\paragraph{  } Once the Wind runtime has translated source code into relevant instructions, Wind proceeds to form it's state information and compute data. For Wind, there are three distinct phases of execution, each which change the context in which incoming code is used. Violations of these execution states will lead to errors being raised. Wind is well suited for running in a REPL-like fashion. It reads code, executes the code, and prints out a response or simply issues a computation to be made.
+\par In this section we will discuss the different components that structure Wind's execution model. The computation buffer, and movement of data during computation will also be explained.
+
+\subsection{States}
+
+\paragraph{  } Wind operates in a \emph{mode-like} manner by focusing it's internal state on what next action it should anticipate to do. The State of Wind and the functionality behind switching states is contained within the \codeerror{WindState} module and related header file. Within the c file and it's header, you can find many functions related to changing the state, reading the state, and printing the state (for debugging or string functions). The actual data type that contains Wind's state is an enum:
+
+\begin{lstlisting}[style=customc]
+typedef enum
+{
+        WindMode_command,
+        WindMode_load,
+        WindMode_exec
+} WindMode;
+\end{lstlisting} 
+
+The value of the current state is stored as this enum type in a \codeword{static} variable inside WindState.c. That state variable is meant to be accessible and consistent throughout the program, as it governs all other functionality in Wind's runtime. \\
+
+\textbf{\emph{Wind Modes}}
+\begin{itemize}
+\item \emph{command}: Accepts source code input and scans for a command name. One a command is found, transitions to looking for arguments.
+\item \emph{load}: This mode looks and scans for data values and arguments to load onto the load buffer. Once a $->$ arrow symbol is found, the mode transitions to exec.
+\item \emph{exec}: This mode uses the computation buffer and related functions to compute the command name and the arguments on the load buffer. This mode also invokes the use of the inactive buffer for the trampoline effect.
+\end{itemize}
+
+\par When the \emph{exec} mode is complete, the state simply transitions back to \emph{command}
+
+\subsubsection{Error States}
+
+Wind has a special intermediary state to handle errors. It also uses a \codeword{static} boolean state to indicate if an error has been detected or not. During any of the three main modes,

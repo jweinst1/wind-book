@@ -74,5 +74,8 @@
 \contentsline {paragraph}{ }{35}{section*.38}
 \contentsline {section}{\numberline {4.1}Translation}{36}{section.4.1}
 \contentsline {paragraph}{ }{36}{section*.39}
-\contentsline {section}{\numberline {4.2}Execution and Computation}{38}{section.4.2}
+\contentsline {section}{\numberline {4.2}Execution and Computation}{39}{section.4.2}
 \contentsline {paragraph}{ }{39}{section*.40}
+\contentsline {subsection}{\numberline {4.2.1}States}{39}{subsection.4.2.1}
+\contentsline {paragraph}{ }{39}{section*.41}
+\contentsline {subsubsection}{Error States}{40}{section*.42}
