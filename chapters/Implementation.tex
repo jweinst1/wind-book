@@ -135,4 +135,99 @@ The value of the current state is stored as this enum type in a \codeword{static
 
 \subsubsection{Error States}
 
-Wind has a special intermediary state to handle errors. It also uses a \codeword{static} boolean state to indicate if an error has been detected or not. During any of the three main modes,
+\par Wind has a special intermediary state to handle errors. It also uses a \codeword{static} boolean state to indicate if an error has been detected or not. During any of the three main modes, an error can be encountered. Normally in the command and load modes, syntax errors are most common. Errors encountered during the exec mode can be more intricate, such as using an invalid type for a specific command's argument.
+
+The error state is accessed through the following functions:
+
+\begin{lstlisting}[style=customc]
+void WindState_write_err(const char* fmt, ...);
+int WindState_has_err(void);
+void WindState_print_err(void);
+\end{lstlisting}
+
+\par Between every mode transition, Wind checks to see if the error state has been set to true. If it has, then it prints the error, sets the error state back to false, and terminates the runtime. Terminating the runtime does not mean Wind exits, it just means Wind will stop translating and executing the current string of source code and wait for new input. 
+\par The only time Wind exits upon an error is if there is no more available static memory in any of the buffers. To fix this, address the compiler flags in the makefile.
+
+\subsection{Computing Commands}
+
+\paragraph{  } Once Wind has translated source code and loaded appropriate arguments onto it's load buffer, it can commence executing the command. All command names in source code are mapped to an enum, similar to that of Wind's modes. Each mode is also equipped with it's own string representation. Part of the reason most state-type variables in Wind are implemented as enums are so they can be easily handled in \codeword{switch} statements.
+
+\par When a commend is due for execution, it first starts at the following function, \codeword{WindRun_exec}
+
+\begin{lstlisting}[style=numc]
+int WindRun_exec(const char** code)
+{
+        switch(WindState_get_cmd())
+        {
+        case WindCommand_null:
+                break;
+        case WindCommand_out:
+                (void) WindExec_out();
+                break;
+        case WindCommand_push:
+                (void) WindExec_push();
+                break;
+        case WindCommand_clr:
+                WindExec_clr();
+                break;
+        case WindCommand_map:
+                WindExec_map();
+                break;
+        case WindCommand_filter:
+                WindExec_filter();
+                break;
+        case WindCommand_reduce:
+                WindReduce_reduce();
+                break;
+        case WindCommand_save:
+                WindExec_save();
+                break;
+        case WindCommand_load:
+                (void) WindExec_load();
+                break;
+        }
+        WindData_load_reset(); // Resets load buf.
+        WindState_set_cmd(WindCommand_null);
+        WindState_set_mode(WindMode_command);
+        return 1;
+}
+\end{lstlisting}
+
+\par From the above code, we can infer that the command enum type is dispatched to it's respective handling function. After that handling function completes, three calls take place, the same for any command that's executed. First, the load buffer is reset. This means the \emph{current pointer} of the load buffer is set back to the beginning, permitting the entire size of the buffer set at compile time to be used for writing new data. Whenever this happens for a buffer, memory is never freed or allocated. The current pointer of a buffer acts as the "end" marker, allowing old data to be overwritten.
+\par Next, the current command is set back to null, and the mode of Wind is set back to command. This allows Wind to restart the process, looking for a new command and arguments to translate.
+
+\par Now, lets explore what happens to one of the specific handling functions for commands, such as the one fo the \emph{map} command:
+
+\textbf{\emph{The Map command handler}}:
+
+\begin{lstlisting}[style=numc]
+int WindExec_map(void)
+{
+        if(!WindData_load_len()) return 1;
+        unsigned char* loadStart;
+        const unsigned char* loadStop;
+
+        unsigned char* activeStart = WindData_active_start();
+        const unsigned char* activeStop = WindData_active_ptr();
+
+        WindData_inactive_reset(); // resets inactive for writing new data.
+        while(activeStart != activeStop)
+        {
+                loadStart = WindData_load_start();
+                loadStop = WindData_load_ptr();
+                // loads into the comp buf.
+                activeStart += WindComp_write_typed(activeStart);
+                // map proceeds.
+                if(!WindComp_map(loadStart, loadStop)) return 0;
+                // If inactive buffer is full, this will exit program.
+                // Only happens in map if using size increasing ops.
+                WindData_inactive_write(WindComp_begin(), WindComp_get_len());
+        }
+
+        WindData_active_switch();
+        return 1;
+}
+\end{lstlisting}
+
+\par \codeword{WindData} as a prefix refers to the file and object file responsible for the having the functionality that controls Wind's buffers at the lowest level. While functions in \emph{WindExec.c} do manipulate and trigger computation, the functions of \emph{WindData} are actually doing the raw, binary work.
+
