@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  2 SEP 2018 23:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  6 SEP 2018 13:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1319,29 +1319,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
-[39] [40]) [41]
+[39] [40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+
+ []
+
+) [42]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 44.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 44.
  (./WindaFlowProgrammingLanguage.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 44.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 44.
-
-
-Package rerunfilecheck Warning: File `WindaFlowProgrammingLanguage.out' has cha
-nged.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `WindaFlowProgrammingLanguage.out':
-(rerunfilecheck)             Before: 2CF973FE626A3677340E95305EAE48EE;2337
-(rerunfilecheck)             After:  A04F73F90C8CCD67D455C24EEA8E9A21;2409.
+Package rerunfilecheck Info: File `WindaFlowProgrammingLanguage.out' has not ch
+anged.
+(rerunfilecheck)             Checksum: A04F73F90C8CCD67D455C24EEA8E9A21;2409.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 44.
  ) 
 Here is how much of TeX's memory you used:
- 27043 strings out of 492995
- 519193 string characters out of 6132704
- 623373 words of memory out of 5000000
- 29875 multiletter control sequences out of 15000+600000
+ 27108 strings out of 492995
+ 520351 string characters out of 6132704
+ 631373 words of memory out of 5000000
+ 29908 multiletter control sequences out of 15000+600000
  14277 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,16n,84p,10379b,1909s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1363,10 +1361,10 @@ ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2
 017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on WindaFlowProgrammingLanguage.pdf (41 pages, 331811 bytes).
+Output written on WindaFlowProgrammingLanguage.pdf (42 pages, 338380 bytes).
 PDF statistics:
- 805 PDF objects out of 1000 (max. 8388607)
- 736 compressed objects within 8 object streams
- 349 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 850 PDF objects out of 1000 (max. 8388607)
+ 780 compressed objects within 8 object streams
+ 381 named destinations out of 1000 (max. 500000)
+ 341 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -229,5 +229,13 @@ int WindExec_map(void)
 }
 \end{lstlisting}
 
-\par \codeword{WindData} as a prefix refers to the file and object file responsible for the having the functionality that controls Wind's buffers at the lowest level. While functions in \emph{WindExec.c} do manipulate and trigger computation, the functions of \emph{WindData} are actually doing the raw, binary work.
+\par \codeword{WindData} as a prefix refers to the file and object file responsible for the having the functionality that controls Wind's buffers at the lowest level. While functions in \emph{WindExec.c} do manipulate and trigger computation, the functions of \emph{WindData} are actually doing the raw, binary work. First, let's walk through the individual steps of this function, and explain the logic: \\
+
+\textbf{\emph{Map Execution Routine}}:
+\begin{enumerate}
+\item Check if the load buffer is empty. Return if no arguments to map command.
+\item Initialize pointers to the start of the data in the active buffer and the end of the data in active buffer.
+\item Reset the inactive buffer. When data finishes it's flow transition from the active to computation to inactive buffer, it has all the capacity of the inactive buffer available.
+\item Begin a loop over the active data. This intends for all the mapping arguments to be applied to every member of the active buffer once.
+\end{enumerate}
 
